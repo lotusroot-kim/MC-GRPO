@@ -45,21 +45,9 @@ MC-GRPO/
 
 ```bash
 bash setup_env.sh
-conda activate rl_env_new
+conda activate mc_grpo_env
 ```
 
-Or install dependencies manually:
-
-```bash
-pip install vllm==0.11.2 trl==0.26.1 peft deepspeed wandb math_verify==0.8.0
-pip install flash-attn --no-build-isolation
-```
-
-**From project root (e.g. `src/`):**
-
-```bash
-bash MC-GRPO/setup_env.sh
-```
 
 ### Python Path
 
