@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Model files and results
+results/
+*.safetensors
+*.bin
+*.pt
+*.pth
+
+# Wandb
+wandb/
+
+# Data files (선택사항 - 필요하면 제외)
+# data/*.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
