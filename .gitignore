@@ -1,4 +1,6 @@
 # Python
+.venv/
+venv/
 __pycache__/
 *.py[cod]
 *$py.class
@@ -15,7 +17,7 @@ results/
 # Wandb
 wandb/
 
-# Data files (선택사항 - 필요하면 제외)
+# Data files (optional - exclude if needed)
 # data/*.json
 
 # IDE

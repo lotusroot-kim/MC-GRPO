@@ -1,0 +1,16 @@
+# MC-GRPO pip dependencies (Python 3.10+)
+# venv: python -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
+vllm==0.11.2
+trl==0.26.1
+peft
+wandb
+deepspeed
+bitsandbytes
+math_verify==0.8.0
+latex2sympy2-extended[antlr4-13-2]
+transformers
+datasets
+torch
+accelerate
+# flash-attn: install separately for CUDA (recommended)
+# pip install flash-attn --no-build-isolation

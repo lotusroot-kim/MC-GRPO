@@ -55,6 +55,12 @@ pip install vllm==0.11.2 trl==0.26.1 peft deepspeed wandb math_verify==0.8.0
 pip install flash-attn --no-build-isolation
 ```
 
+**From project root (e.g. `src/`):**
+
+```bash
+bash MC-GRPO/setup_env.sh
+```
+
 ### Python Path
 
 ```bash
@@ -108,7 +114,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 accelerate launch --config_file recipes/accelerate_
 
 | Argument | Description |
 |---|---|
-| `--mc=True` | Enable median-centered baseline (MC-GRPO). Set `False` for standard GRPO. |
+| `--mc=True` | Enable **Median centered (ours)** — median baseline and MAD normalization (MC-GRPO). Set `False` for standard GRPO (mean baseline). |
 | `--num_generations` | Number of rollouts per prompt (G). MC-GRPO internally generates G+1. |
 | `--loss_type` | Loss formulation: `grpo`, `dapo`, or `dr_grpo`. |
 | `--use_vllm=True` | Use vLLM for fast rollout generation. |

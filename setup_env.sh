@@ -7,7 +7,7 @@ set -e
 # Sets up a conda environment for RL training
 ##############################################
 
-ENV_NAME="rl_env_new"
+ENV_NAME="mc_grpo_env"
 PYTHON_VERSION="3.12"
 
 echo "========================================================="
@@ -38,8 +38,12 @@ echo "📥 Installing packages..."
 # Note: 'conda activate' may not work in non-interactive bash scripts,
 # so we use 'conda run' to run commands inside the environment.
 conda run -n $ENV_NAME pip install vllm==0.11.2
-conda run -n $ENV_NAME pip install \
-  https://github.com/Dao-AILab/flash-attention/releases/download/v2.8.1/flash_attn-2.8.1+cu12torch2.9cxx11abiTRUE-cp312-cp312-linux_x86_64.whl
+# Flash-attn: try prebuilt wheel first; fallback to build from source
+if ! conda run -n $ENV_NAME pip install \
+  "https://github.com/Dao-AILab/flash-attention/releases/download/v2.8.1/flash_attn-2.8.1+cu12torch2.9cxx11abiTRUE-cp312-cp312-linux_x86_64.whl" 2>/dev/null; then
+  echo "   Prebuilt flash-attn wheel not compatible; building from source..."
+  conda run -n $ENV_NAME pip install flash-attn --no-build-isolation
+fi
 conda run -n $ENV_NAME pip install trl==0.26.1
 conda run -n $ENV_NAME pip install peft
 conda run -n $ENV_NAME pip install liger-kernel
@@ -47,6 +51,7 @@ conda run -n $ENV_NAME pip install wandb
 conda run -n $ENV_NAME pip3 install deepspeed
 conda run -n $ENV_NAME pip install bitsandbytes
 conda run -n $ENV_NAME pip install math_verify==0.8.0
+conda run -n $ENV_NAME pip install "latex2sympy2-extended[antlr4-13-2]"
 
 echo ""
 echo "========================================================="

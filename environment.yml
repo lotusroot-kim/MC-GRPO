@@ -1,0 +1,21 @@
+# MC-GRPO Conda environment
+# Usage: conda env create -f environment.yml && conda activate rl_env_new
+name: rl_env_new
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+    - vllm==0.11.2
+    - trl==0.26.1
+    - peft
+    - wandb
+    - deepspeed
+    - bitsandbytes
+    - math_verify==0.8.0
+    - "latex2sympy2-extended[antlr4-13-2]"
+    # Install flash-attn separately for your env:
+    # pip install flash-attn --no-build-isolation
+    # Or use a compatible wheel: https://github.com/Dao-AILab/flash-attention/releases
