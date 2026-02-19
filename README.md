@@ -136,4 +136,4 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 accelerate launch --config_file recipes/accelerate_
 
 ## Acknowledgements
 
-This codebase builds on [TRL](https://github.com/huggingface/trl) and [Open-R1](https://github.com/huggingface/open-r1).
+This codebase builds on [TRL](https://github.com/huggingface/trl), [Open-R1](https://github.com/huggingface/open-r1), and [CPPO](https://github.com/lzhxmu/CPPO).

@@ -491,7 +491,7 @@ class GRPOTrainer(BaseTrainer):
         self.epsilon_high = args.epsilon_high if args.epsilon_high is not None else args.epsilon
         # Tracks the number of iterations (forward + backward passes), including those within a grad accum cycle
         self._step = 0
-        # GSM 특화 기능: allocation을 위한 repeat 변수
+        # GSM-specific: repeat variable for allocation
         self.repeat = 1
         self.eval_time = 0
         # Buffer the batch to reuse generated outputs across multiple updates. For more details, see
@@ -1284,9 +1284,9 @@ class GRPOTrainer(BaseTrainer):
                 if mode == "train":
                     num_generations = num_generations + 1
                 
-                # GSM 특화 기능: allocation 지원
+                # GSM-specific: allocation support
                 if self.args.allocation and mode == "train":
-                    self.repeat = 1  # pruning 제거로 인해 항상 1
+                    self.repeat = 1  # always 1 since pruning was removed
                     num_generations = num_generations * self.repeat
                 
                 if self.accelerator.is_main_process:
